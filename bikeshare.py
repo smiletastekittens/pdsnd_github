@@ -2,6 +2,7 @@ import time
 import pandas as pd
 import numpy as np
 
+# Add new .csv files to this CITY_DATA dictionary if you want them to be usable
 CITY_DATA = { 'chicago': 'chicago.csv',
     'new york city': 'new_york_city.csv',
     'washington': 'washington.csv' }
