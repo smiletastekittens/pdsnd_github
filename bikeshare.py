@@ -292,24 +292,31 @@ def user_stats(df):
 def main():
 
     while True:
-        city, month, day = get_filters()
 
-        city_readable = city.capitalize()
-        month_readable = ("all months", "the month of {}".format(month.capitalize()))[month != 'all']
-        day_readable = ("all days", "{}s".format(day.capitalize()))[day != 'all']
+        try:
 
-        df = load_data(city, month, day)
+            city, month, day = get_filters()
 
-        print_separator()
+            city_readable = city.capitalize()
+            month_readable = ("all months", "the month of {}".format(month.capitalize()))[month != 'all']
+            day_readable = ("all days", "{}s".format(day.capitalize()))[day != 'all']
 
-        print("Loading data for {} in {} for the city of {}".format(day_readable, month_readable, city_readable))
+            df = load_data(city, month, day)
 
-        print_separator()
+            print_separator()
 
-        time_stats(df)
+            print("Loading data for {} in {} for the city of {}".format(day_readable, month_readable, city_readable))
 
-        if wait_for_input("Station Stats") == False:
-            break;
+            print_separator()
+
+            time_stats(df)
+
+            if wait_for_input("Station Stats") == False:
+                break;
+
+        except Exception as e:
+            print("Unable to load time stats: {}".format(e))
+            break
 
         print_separator()
 
