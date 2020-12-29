@@ -313,7 +313,7 @@ def main():
             time_stats(df)
 
             if wait_for_input("Station Stats") == False:
-                break;
+                break
 
         except Exception as e:
             print("Unable to load time stats: {}".format(e))
@@ -324,14 +324,14 @@ def main():
         station_stats(df)
 
         if wait_for_input("Trip Duration Stats") == False:
-            break;
+            break
 
         print_separator()
 
         trip_duration_stats(df)
 
         if wait_for_input("User Stats") == False:
-            break;
+            break
 
         print_separator()
 
