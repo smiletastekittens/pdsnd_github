@@ -45,7 +45,7 @@ def handle_raw_data_request(df):
             exit_loop = True
 
         # solicit user input
-        user_input = input("Would you like to see rows {} to {} of raw data?  Please answser 'yes' or 'no'".format(start_row, end_row - 1))
+        user_input = input("Would you like to see rows {} to {} of raw data? [yes | no]".format(start_row, end_row - 1))
         if len(user_input) > 0 and user_input == 'yes':
             # show the raw chunk of data
             sub = df[start_row:end_row]
@@ -81,7 +81,8 @@ def validate_city(city):
         (bool) True or False value indicating whether the city is valid
     '''
     if len(city) < 1 or city not in CITY_DATA:
-        print("Invalid city supplied.  Please supply value 'Chicago', 'New York City', or 'Washington'")
+        available_cities = " - ".join(CITY_DATA.keys())
+        print("Invalid city supplied.  Please supply one of the following values: {}".format(available_cities))
         return False
     else:
         return True
